@@ -7,20 +7,19 @@ type Translations = {
 };
 
 class TranslationProvider {
-    private translations: Translations = {};
+  private translations: Translations = {};
 
-
-    public setTranslations(language: string): void {
-        if (language === LANGUAGES.AR) {
-            this.translations = {...arabicTranslations};
-        } else {
-            this.translations = {...englishTranslations};
-        }
+  public setTranslations(language: string): void {
+    if (language === LANGUAGES.AR) {
+      this.translations = {...arabicTranslations};
+    } else {
+      this.translations = {...englishTranslations};
     }
+  }
 
-    public getTranslation(key: string): string {
-        return this.translations[key];
-    }
+  public getTranslation(key: string): string {
+    return this.translations[key];
+  }
 };
 
 export const translationProvider = new TranslationProvider();
