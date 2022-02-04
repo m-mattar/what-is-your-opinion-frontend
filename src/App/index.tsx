@@ -1,6 +1,6 @@
 import React from 'react';
 import { translationProvider } from '../Translations/TranslationProvider';
-import { PlatformRouter } from '../Routes/PlatformRouter';
+import { AppRouter } from '../AppRouter';
 import { LANGUAGES } from "../Translations/TranslationUtils";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   translationProvider.setTranslations(LANGUAGES.EN);
 
   return (
-      <PlatformRouter/>
+    <AppRouter/>
   );
 }
 

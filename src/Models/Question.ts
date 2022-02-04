@@ -1,7 +1,6 @@
-import { Entity } from "./Entity";
-
 export type Question = {
-  id: string,
-  entity: Entity,
-  question: string,
+  id: string | undefined,
+  entity: string,
+  questionType: string,
+  voteOptions: string[] | undefined,
 };

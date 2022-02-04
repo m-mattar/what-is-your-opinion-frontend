@@ -1,5 +1,9 @@
 {
     "resources": {
-        "success_message": "You successfully created a question."
+        "app_title": "What's your Opinion?",
+        "previous_results": "View Previous Results",
+        "create_question": "Create a Question",
+        "create_question_choose_entity": "Choose an Entity for your question",
+        "create_question_success": "You successfully created a question."
     }
 }

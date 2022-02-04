@@ -1,5 +1,9 @@
 {
     "resources": {
-        "success_message": "لقد قمت بكتابة سؤال بنجاح."
+        "app_title": "شو رأيك؟",
+        "previous_results": "النتاىْج السابقة",
+        "create_question": "انشاء تصويت جديد",
+        "create_question_choose_entity": "اختر شخصيّة للتصويت",
+        "create_question_success": "لقد قمت بكتابة سؤال بنجاح."
     }
 }

@@ -1,4 +1,10 @@
+/**
+ * Vote:
+ * * 0 -> negative (against)
+ * * 1 -> positive (with)
+ * **/
+
 export type Vote = {
-  questionId: string,
-  answer: string,
+  id: string,
+  vote: number,
 };
