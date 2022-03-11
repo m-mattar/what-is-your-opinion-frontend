@@ -1,9 +1,10 @@
 {
-    "resources": {
-        "app_title": "شو رأيك؟",
-        "previous_results": "النتاىْج السابقة",
-        "create_question": "انشاء تصويت جديد",
-        "create_question_choose_entity": "اختر شخصيّة للتصويت",
-        "create_question_success": "لقد قمت بكتابة سؤال بنجاح."
-    }
+    "app_title": "شو رأيك؟",
+    "results_search_page_title": "النتاىْج السابقة",
+    "results_search_bar": "ابحث عن نتائج",
+    "create_question_page_title": "انشاء تصويت جديد",
+    "create_question_choose_entity": "اختر شخصيّة للتصويت",
+    "create_question_success": "لقد قمت بكتابة سؤال بنجاح",
+    "voting_page_title": "انشاء تصويت",
+    "voting_page_submit_vote_button": "ارسل صوتك"
 }

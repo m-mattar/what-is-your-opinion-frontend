@@ -1,5 +1,5 @@
 import { Result } from "../../../Models/Result";
-import { ResultCard } from "../ResultCard";
+import { ResultCard } from "./ResultCard";
 
 type resultListProps = {
     results: Result[],
@@ -12,8 +12,8 @@ export function ResultList(props: resultListProps) {
     }, [])
 
   return (
-    <ul>
-      { mappedResults }
-    </ul>
+    <div className={"box"}>
+     { mappedResults }
+    </div>
   );
 }

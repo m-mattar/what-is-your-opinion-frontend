@@ -1,9 +1,10 @@
 {
-    "resources": {
-        "app_title": "What's your Opinion?",
-        "previous_results": "View Previous Results",
-        "create_question": "Create a Question",
-        "create_question_choose_entity": "Choose an Entity for your question",
-        "create_question_success": "You successfully created a question."
-    }
+    "app_title": "What's your Opinion?",
+    "results_search_page_title": "View Previous Results",
+    "results_search_bar": "Search for results",
+    "create_question_page_title": "Create a Question",
+    "create_question_choose_entity": "Choose an Entity for your question",
+    "create_question_success": "You successfully created a question.",
+    "voting_page_title": "Submit your vote.",
+    "voting_page_submit_vote_button": "Submit Vote"
 }

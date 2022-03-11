@@ -1,10 +1,48 @@
 import * as React from "react";
-import Auxiliary from "../../HigherOrderComponents/Auxiliary";
+import Auxiliary from "../../Components/HigherOrderComponents/Auxiliary";
+import { Question } from "../../Models/Question";
+import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
+import { TRANSLATION_KEYS } from "../../Translations/TranslationUtils";
+import { QuestionCard } from "./QuestionCard/QuestionCard";
+import { SubmissionButton } from "../../Components/Elements/Buttons/SubmissionButton";
+import { BUTTON_TYPES } from "../../Utils/ButtonUtils";
+import { useState } from "react";
+import { VotingOptionsList } from "./VotingOptionsList";
+import { VoteOption } from "../../Models/VoteOption";
 
-export function VotingPage() {
+type VotingPageProps = {
+  question: Question;
+}
+
+export function VotingPage(props: VotingPageProps) {
+  const [isSubmissionButtonEnabled, setIsSubmissionButtonEnabled] = useState(false);
+  const [selectedVotingOption, setSelectedVotingOption] = useState( {} as VoteOption);
+
+  const handleChangeOfSelectedVotingOption = (vote: VoteOption): void => {
+    setSelectedVotingOption(vote);
+
+  }
+
   return (
     <Auxiliary>
-      Voting Page
+      <Text
+        translationKey={TRANSLATION_KEYS.voting_page_title}
+        textType={TEXT_TYPE.page_title}
+      />
+
+      <div className={"box"}>
+        <QuestionCard question={props.question}/>
+        <VotingOptionsList
+          votingOptions={props.question.voteOptions}
+          onChangeSelection={handleChangeOfSelectedVotingOption}
+        />
+      </div>
+
+      <SubmissionButton
+        request={{} as JSON }
+        type={BUTTON_TYPES.SUBMIT_VOTE}
+        isEnabled={isSubmissionButtonEnabled}
+      />
     </Auxiliary>
   );
 }

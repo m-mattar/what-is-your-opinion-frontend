@@ -4,7 +4,7 @@
  * * 1 -> positive (with)
  * **/
 
-export type Vote = {
+export type VoteOption = {
   id: string,
-  vote: number,
+  option: string,
 };

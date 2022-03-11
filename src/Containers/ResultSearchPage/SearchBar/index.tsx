@@ -1,26 +1,33 @@
-import "./style.css"
 import { ChangeEvent } from "react";
+import { TRANSLATION_KEYS } from "../../../Translations/TranslationUtils";
+import { translationProvider } from "../../../Translations/TranslationProvider";
 
 type SearchBarProps = {
     keyword: string,
-    setKeyword: any, //placeholder, need it to be a function
+    setKeyword: any,
 }
 
 export function SearchBar(props: SearchBarProps) {
   return (
-    <form>
-      <input
-        className={"searchBar"}
-        id={"result-search-bar"}
-        value={props.keyword}
-        name={"entity"}
-        placeholder={"Search for completed polls"}
-        onChange={
-          (changedKeyword: ChangeEvent<HTMLInputElement>) => {
-            props.setKeyword(changedKeyword.target.value);
-          }
-        }
-      />
-    </form>
+    <div className={"field"}>
+      <p className="control has-icons-left">
+        <input
+            className={"input"}
+            type={"text"}
+            id={"result-search-bar"}
+            value={props.keyword}
+            name={"entity"}
+            placeholder={translationProvider.getTranslation(TRANSLATION_KEYS.results_search_bar)}
+            onChange={
+              (changedKeyword: ChangeEvent<HTMLInputElement>) => {
+                props.setKeyword(changedKeyword.target.value);
+              }
+            }
+        />
+        <span className={"icon is-small is-left"}>
+          <i className={"fa-regular fa-magnifying-glass"}></i>
+        </span>
+      </p>
+    </div>
   );
 }

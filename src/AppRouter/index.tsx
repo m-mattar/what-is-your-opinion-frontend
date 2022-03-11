@@ -5,7 +5,10 @@ import { ResultSearchPage } from "../Containers/ResultSearchPage";
 import { ResultDisplayPage } from "../Containers/ResultDisplayPage";
 import { VotingPage } from "../Containers/VotingPage";
 import { QuestionCreationForm } from "../Containers/QuestionCreationForm";
-import { RAW_ROUTES } from "./RouterUtils";
+import { RAW_ROUTES } from "../Utils/RouterUtils";
+import { Question } from "../Models/Question";
+import { votingService } from "../Services/VotingService";
+import { urlUtils } from "../Utils/UrlUtils";
 
 export function AppRouter() {
   return (
@@ -42,8 +45,10 @@ function fallbackPageRender() {
 }
 
 function votingPageRender() {
+  let questionId: string = urlUtils.getQuestionId();
+  let question: Question = votingService.getQuestionById(questionId)
   return (
-    <VotingPage/>
+    <VotingPage question={question}/>
   );
 }
 
