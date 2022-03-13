@@ -12,12 +12,12 @@ export function QuestionCreationForm() {
     <Auxiliary>
       <Text
         translationKey={TRANSLATION_KEY.create_question_page_title}
-        textType={TEXT_TYPE.page_title}>
-      </Text>
+        textType={TEXT_TYPE.page_title}
+      />
 
       <SearchPage
-        searchPageTarget={SEARCH_PAGE_TARGET.ENTITIES}>
-      </SearchPage>
+        searchPageTarget={SEARCH_PAGE_TARGET.ENTITIES}
+      />
 
     </Auxiliary>
   );

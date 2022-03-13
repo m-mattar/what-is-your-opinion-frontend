@@ -15,8 +15,8 @@ export function ResultSearchPage() {
         textType={TEXT_TYPE.page_title}
       />
       <SearchPage
-        searchPageTarget={SEARCH_PAGE_TARGET.VOTE_RESULTS}>
-      </SearchPage>
+        searchPageTarget={SEARCH_PAGE_TARGET.VOTE_RESULTS}
+      />
     </Auxiliary>
   );
 }

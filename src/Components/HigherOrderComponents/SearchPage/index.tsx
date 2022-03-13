@@ -38,8 +38,8 @@ export function SearchPage(props: SearchPageProps) {
     <Auxiliary>
       <Text
         translationKey={searchPageTargetToTranslationKey.get!(props.searchPageTarget)!}
-        textType={TEXT_TYPE.page_title}>
-      </Text>
+        textType={TEXT_TYPE.page_title}
+      />
 
       <SearchBar
         keyword={searchInput}
