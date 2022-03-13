@@ -2,7 +2,7 @@ import * as React from "react";
 import Auxiliary from "../../Components/HigherOrderComponents/Auxiliary";
 import { Question } from "../../Models/Question";
 import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
-import { TRANSLATION_KEYS } from "../../Translations/TranslationUtils";
+import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
 import { QuestionCard } from "./QuestionCard/QuestionCard";
 import { SubmissionButton } from "../../Components/Elements/Buttons/SubmissionButton";
 import { BUTTON_TYPES } from "../../Utils/ButtonUtils";
@@ -26,7 +26,7 @@ export function VotingPage(props: VotingPageProps) {
   return (
     <Auxiliary>
       <Text
-        translationKey={TRANSLATION_KEYS.voting_page_title}
+        translationKey={TRANSLATION_KEY.voting_page_title}
         textType={TEXT_TYPE.page_title}
       />
 

@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { TRANSLATION_KEYS } from "../../../Translations/TranslationUtils";
+import { TRANSLATION_KEY } from "../../../Translations/TranslationUtils";
 import { translationProvider } from "../../../Translations/TranslationProvider";
 
 type SearchBarProps = {
@@ -17,7 +17,7 @@ export function SearchBar(props: SearchBarProps) {
             id={"result-search-bar"}
             value={props.keyword}
             name={"entity"}
-            placeholder={translationProvider.getTranslation(TRANSLATION_KEYS.results_search_bar)}
+            placeholder={translationProvider.getTranslation(TRANSLATION_KEY.results_search_bar)}
             onChange={
               (changedKeyword: ChangeEvent<HTMLInputElement>) => {
                 props.setKeyword(changedKeyword.target.value);

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BaseButton } from "../BaseButton";
 import { translationProvider } from "../../../../Translations/TranslationProvider";
-import { TRANSLATION_KEYS } from "../../../../Translations/TranslationUtils";
+import { TRANSLATION_KEY } from "../../../../Translations/TranslationUtils";
 
 export const SUBMISSION_BUTTON_TYPE = {
   submit_voting_answer: "submit_voting_answer",
@@ -21,7 +21,7 @@ export function SubmissionButton(props: SubmissionButtonProps) {
   return (
     <BaseButton
       onClick={onClick}
-      title={translationProvider.getTranslation(TRANSLATION_KEYS.voting_page_submit_vote_button)}
+      title={translationProvider.getTranslation(TRANSLATION_KEY.voting_page_submit_vote_button)}
       isEnabled={props.isEnabled}
     />
   );

@@ -5,6 +5,7 @@ type resultListProps = {
     results: Result[],
 }
 
+//TODO: REFACTOR TO TEMPLATED SearchResultList
 export function ResultList(props: resultListProps) {
   let mappedResults = props.results
     .map( currentResult => {
