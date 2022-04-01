@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Result } from "../../../Models/Result";
-import { resultService } from "../../../Services/ResultService";
+import { VoteResult } from "../../../Models/VoteResult";
 import { Text, TEXT_TYPE } from "../../Elements/Text";
 import { SEARCH_PAGE_TARGET, searchPageTargetToTranslationKey } from "./Utils";
 import Auxiliary from "../Auxiliary";
 import { SearchBar } from "../../Elements/SearchBar";
-import { ResultList } from "../../../Containers/ResultSearchPage/ResultList";
+import { SearchResultList } from "./SearchResultList";
 
 type SearchPageProps = {
   searchPageTarget: SEARCH_PAGE_TARGET,
+  initialResults: any, //has to be an array
 }
 
 export function SearchPage(props: SearchPageProps) {
   const [searchInput, setSearchInput] = useState('' as string);
-  const [searchResultListDefault, setSearchResultListDefault] = useState([] as Result[]);
-  const [searchResultList, setSearchResultList] = useState([] as Result[]);
-
-  const fetchInitialData = () => {
-    let initialResults: Result[] = resultService.getInitialSearchPageResults();
-    setSearchResultListDefault(initialResults);
-    setSearchResultList(initialResults);
-  }
+  const [searchResultListDefault, setSearchResultListDefault] = useState([] as VoteResult[]);
+  const [searchResultList, setSearchResultList] = useState([] as VoteResult[]);
 
   const filterResultList = (input: string) => {
     const filtered = searchResultListDefault.filter(result => {
@@ -31,7 +25,9 @@ export function SearchPage(props: SearchPageProps) {
   }
 
   useEffect(() => {
-    fetchInitialData();
+    //TODO: CONVERT TO REDUX
+    setSearchResultListDefault(props.initialResults);
+    setSearchResultList(props.initialResults);
   }, []);
 
   return (
@@ -45,7 +41,7 @@ export function SearchPage(props: SearchPageProps) {
         keyword={searchInput}
         setKeyword={filterResultList}
       />
-      <ResultList results={searchResultList}/>
+      <SearchResultList results={searchResultList} searchPageTarget={props.searchPageTarget}/>
     </Auxiliary>
   );
 }

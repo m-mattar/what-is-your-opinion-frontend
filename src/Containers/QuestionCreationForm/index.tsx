@@ -1,9 +1,6 @@
-import React, { useState } from "react";
 import Auxiliary from "../../Components/HigherOrderComponents/Auxiliary";
 import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
-import { Result } from "../../Models/Result";
-import { Entity } from "../../Models/Entity";
 import { SearchPage } from "../../Components/HigherOrderComponents/SearchPage";
 import { SEARCH_PAGE_TARGET } from "../../Components/HigherOrderComponents/SearchPage/Utils";
 
@@ -17,8 +14,8 @@ export function QuestionCreationForm() {
 
       <SearchPage
         searchPageTarget={SEARCH_PAGE_TARGET.ENTITIES}
+        initialResults={[]}
       />
-
     </Auxiliary>
   );
 }

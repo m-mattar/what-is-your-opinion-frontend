@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
 import Auxiliary from "../../Components/HigherOrderComponents/Auxiliary";
-import { Result } from "../../Models/Result";
+import { VoteResult } from "../../Models/VoteResult";
 import { resultService } from "../../Services/ResultService";
 import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
 import { SearchPage } from "../../Components/HigherOrderComponents/SearchPage";
 import { SEARCH_PAGE_TARGET } from "../../Components/HigherOrderComponents/SearchPage/Utils";
 
-export function ResultSearchPage() {
+export function VoteResultSearchPage() {
+  const fetchInitialData = () => {
+    let initialResults: VoteResult[] = resultService.getInitialSearchPageResults();
+    return initialResults;
+  }
+
   return (
     <Auxiliary>
       <Text
@@ -16,6 +20,7 @@ export function ResultSearchPage() {
       />
       <SearchPage
         searchPageTarget={SEARCH_PAGE_TARGET.VOTE_RESULTS}
+        initialResults={fetchInitialData()}
       />
     </Auxiliary>
   );

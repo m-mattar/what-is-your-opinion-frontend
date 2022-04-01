@@ -1,8 +1,8 @@
 import * as React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router"
-import { ResultSearchPage } from "../Containers/ResultSearchPage";
-import { ResultDisplayPage } from "../Containers/ResultDisplayPage";
+import { VoteResultSearchPage } from "../Containers/VoteResultSearchPage";
+import { VoteResultDisplayPage } from "../Containers/VoteResultDisplayPage";
 import { VotingPage } from "../Containers/VotingPage";
 import { QuestionCreationForm } from "../Containers/QuestionCreationForm";
 import { RAW_ROUTES } from "../Utils/RouterUtils";
@@ -28,19 +28,19 @@ export function AppRouter() {
 
 function resultSearchPageRender() {
   return (
-    <ResultSearchPage/>
+    <VoteResultSearchPage/>
   );
 }
 
 function resultDisplayPageRender() {
   return (
-    <ResultDisplayPage/>
+    <VoteResultDisplayPage/>
   );
 }
 
 function fallbackPageRender() {
   return (
-    <ResultSearchPage/>
+    <VoteResultSearchPage/>
   );
 }
 

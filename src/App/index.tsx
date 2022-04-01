@@ -12,16 +12,17 @@ function App() {
   translationProvider.setTranslations(LANGUAGES.AR);
 
   return (
-    <div className={"box"}>
-      <div className={"column is-half is-offset-2"}>
-        <Text
-          translationKey={TRANSLATION_KEY.app_title}
-          textType={TEXT_TYPE.app_title}
-        />
-        <AppRouter/>
+    <section className={"hero is-fullheight-with-navbar"}>
+      <div className={"hero-body"}>
+        <div className={"column is-half is-offset-2"}>
+          <Text
+            translationKey={TRANSLATION_KEY.app_title}
+            textType={TEXT_TYPE.app_title}
+          />
+          <AppRouter/>
+        </div>
       </div>
-
-    </div>
+    </section>
   );
 }
 

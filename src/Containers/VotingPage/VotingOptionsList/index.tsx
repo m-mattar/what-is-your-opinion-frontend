@@ -21,7 +21,7 @@ export function VotingOptionsList(props: VotingOptionsListProps) {
         key={vote.id}
         vote={vote}
         onSelection={() => onItemSelected(i, vote)}
-        isSelected={selectedItem == i ? true : false}
+        isSelected={selectedItem === i ? true : false}
       />
     }, [])
 

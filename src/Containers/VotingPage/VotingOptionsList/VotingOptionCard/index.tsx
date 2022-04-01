@@ -8,14 +8,14 @@ type VotingOptionCardProps = {
 }
 
 export function VotingOptionCard(props: VotingOptionCardProps) {
-  let classname = "votingOption " + (props.isSelected ? "isSelected" : "notSelected");
+  let classnameSelection = "votingOption " + (props.isSelected ? "isSelected" : "notSelected");
 
   useEffect(() => {
-    console.log("USE EFFECT", props.vote.option, " ", classname)
+    console.log("USE EFFECT", props.vote.option, " ", classnameSelection)
   })
 
   return (
-    <div className={"card"} onClick={props.onSelection}>
+    <div className={"card"} onClick={props.onSelection} card-background-color={`hsl(0, 10%, 100%)`}>
       <header className={"card-header"}>
         <p className={"card-header-title"}>
           {props.vote.option}
