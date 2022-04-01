@@ -7,6 +7,7 @@ type SearchResultCardProps = {
   searchPageTarget: SEARCH_PAGE_TARGET,
 }
 
+//TODO: convert this to an interface
 export function SearchResultCard(props: SearchResultCardProps): ReactElement {
   switch (props.searchPageTarget) {
     case SEARCH_PAGE_TARGET.VOTE_RESULTS: {
