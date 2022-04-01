@@ -1,9 +1,10 @@
 {
     "app_title": "What's your Opinion?",
     "create_question_choose_entity": "Choose an Entity for your question",
+    "create_question_page_redirect_button": "Create a Question",
     "create_question_page_title": "Create a Question",
     "create_question_success": "You successfully created a question",
-    "results_search_bar": "Search for results",
+    "results_search_bar": "Search",
     "results_search_choose_vote": "Choose Vote Result",
     "results_search_page_title": "View Previous Results",
     "voting_page_submit_vote_button": "Submit Vote",

@@ -4,8 +4,7 @@ import { Question } from "../../Models/Question";
 import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
 import { QuestionCard } from "./QuestionCard/QuestionCard";
-import { SubmissionButton } from "../../Components/Elements/Buttons/SubmissionButton";
-import { BUTTON_TYPES } from "../../Utils/ButtonUtils";
+import { SUBMISSION_BUTTON_TYPE, SubmissionButton } from "../../Components/Elements/Buttons/SubmissionButton";
 import { useState } from "react";
 import { VotingOptionsList } from "./VotingOptionsList";
 import { VoteOption } from "../../Models/VoteOption";
@@ -40,7 +39,7 @@ export function VotingPage(props: VotingPageProps) {
 
       <SubmissionButton
         request={{} as JSON }
-        type={BUTTON_TYPES.SUBMIT_VOTE}
+        type={SUBMISSION_BUTTON_TYPE.SUBMIT_VOTE}
         isEnabled={isSubmissionButtonEnabled}
       />
     </Auxiliary>

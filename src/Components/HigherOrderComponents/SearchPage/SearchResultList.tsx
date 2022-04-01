@@ -10,8 +10,12 @@ type SearchResultListProps = {
 
 export function SearchResultList(props: SearchResultListProps) {
   let mappedResults = props.results
-    .map( currentResult => {
-      return <SearchResultCard result={currentResult} searchPageTarget={props.searchPageTarget}/>
+    .map( (currentResult, i) => {
+      return <SearchResultCard
+        key={"result-card-"+i}
+        result={currentResult}
+        searchPageTarget={props.searchPageTarget}
+      />
     }, [])
 
   return (

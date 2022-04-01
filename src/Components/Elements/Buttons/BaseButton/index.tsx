@@ -1,6 +1,7 @@
 import * as React from "react";
 
 type BaseButtonProps = {
+    classname: string,
     onClick: any,
     title: string,
     isEnabled: boolean,
@@ -9,7 +10,7 @@ type BaseButtonProps = {
 export function BaseButton(props: BaseButtonProps) {
   return (
     <button
-      className={"button is-medium is-light is-responsive"}
+      className={props.classname}
       onClick={props.onClick}
     > {props.title} </button>
   );

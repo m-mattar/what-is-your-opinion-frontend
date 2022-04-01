@@ -1,9 +1,10 @@
 {
     "app_title": "شو رأيك؟",
     "create_question_choose_entity": "اختر شخصيّة للتصويت",
+    "create_question_page_redirect_button": "انشاء تصويت جديد",
     "create_question_page_title": "انشاء تصويت جديد",
     "create_question_success": "لقد قمت بكتابة سؤال بنجاح",
-    "results_search_bar": "ابحث عن نتائج",
+    "results_search_bar": "ابحث",
     "results_search_choose_vote": "اختر نتيجة تصويت",
     "results_search_page_title": "النتاىْج السابقة",
     "voting_page_submit_vote_button": "ارسل صوتك",

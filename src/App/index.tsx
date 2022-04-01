@@ -12,7 +12,7 @@ function App() {
   translationProvider.setTranslations(LANGUAGES.AR);
 
   return (
-    <section className={"hero is-fullheight-with-navbar"}>
+    <section className={"container is-fullheight"}>
       <div className={"hero-body"}>
         <div className={"column is-half is-offset-2"}>
           <Text

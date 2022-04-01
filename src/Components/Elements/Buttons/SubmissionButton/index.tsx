@@ -3,13 +3,13 @@ import { BaseButton } from "../BaseButton";
 import { translationProvider } from "../../../../Translations/TranslationProvider";
 import { TRANSLATION_KEY } from "../../../../Translations/TranslationUtils";
 
-export const SUBMISSION_BUTTON_TYPE = {
-  submit_voting_answer: "submit_voting_answer",
+export enum SUBMISSION_BUTTON_TYPE {
+  SUBMIT_VOTE,
 }
 
 type SubmissionButtonProps = {
   request: JSON,
-  type: string,
+  type: SUBMISSION_BUTTON_TYPE,
   isEnabled: boolean,
 }
 
@@ -20,6 +20,7 @@ export function SubmissionButton(props: SubmissionButtonProps) {
 
   return (
     <BaseButton
+      classname={"button is-medium is-light is-responsive"}
       onClick={onClick}
       title={translationProvider.getTranslation(TRANSLATION_KEY.voting_page_submit_vote_button)}
       isEnabled={props.isEnabled}
