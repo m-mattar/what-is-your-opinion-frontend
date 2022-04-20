@@ -9,7 +9,11 @@ type SearchResultListProps = {
 export function SearchResultList(props: SearchResultListProps) {
   let mappedResults = props.results
     .map( (currentResult, i) => {
-      return currentResult.display()
+      return (
+        <div key={"search-result-list-card-"+i}>
+          {currentResult.display()}
+        </div>
+      );
     }, [])
 
   return (
