@@ -1,5 +1,5 @@
 import Auxiliary from "../../Components/HigherOrderComponents/Auxiliary";
-import { VoteResult } from "../../Models/VoteResult";
+import { VoteResult } from "../../Models/VoteResult/VoteResult";
 import { resultService } from "../../Services/ResultService";
 import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";

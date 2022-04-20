@@ -1,21 +1,15 @@
-import { VoteResult } from "../../../Models/VoteResult";
 import { SEARCH_PAGE_TARGET } from "./Utils";
-import { SearchResultCard } from "./SearchResultCard";
-import { Entity } from "../../../Models/Entity";
+import { Searchable } from "./Searchable";
 
 type SearchResultListProps = {
-  results: VoteResult[] | Entity[],
+  results: Searchable[],
   searchPageTarget: SEARCH_PAGE_TARGET,
 }
 
 export function SearchResultList(props: SearchResultListProps) {
   let mappedResults = props.results
     .map( (currentResult, i) => {
-      return <SearchResultCard
-        key={"result-card-"+i}
-        result={currentResult}
-        searchPageTarget={props.searchPageTarget}
-      />
+      return currentResult.display()
     }, [])
 
   return (

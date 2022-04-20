@@ -4,7 +4,7 @@ import { translationProvider } from "../../../Translations/TranslationProvider";
 
 type SearchBarProps = {
     keyword: string,
-    setKeyword: any,
+    filterKeyword: any,
 }
 
 export function SearchBar(props: SearchBarProps) {
@@ -20,7 +20,7 @@ export function SearchBar(props: SearchBarProps) {
             placeholder={translationProvider.getTranslation(TRANSLATION_KEY.results_search_bar)}
             onChange={
               (changedKeyword: ChangeEvent<HTMLInputElement>) => {
-                props.setKeyword(changedKeyword.target.value);
+                props.filterKeyword(changedKeyword.target.value);
               }
             }
         />

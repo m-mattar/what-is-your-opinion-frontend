@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VoteResult } from "../../../Models/VoteResult";
+import { VoteResult } from "../../../Models/VoteResult/VoteResult";
 import { Text, TEXT_TYPE } from "../../Elements/Text";
 import { SEARCH_PAGE_TARGET, searchPageTargetToTranslationKey } from "./Utils";
 import Auxiliary from "../Auxiliary";
@@ -39,7 +39,7 @@ export function SearchPage(props: SearchPageProps) {
 
       <SearchBar
         keyword={searchInput}
-        setKeyword={filterResultList}
+        filterKeyword={filterResultList}
       />
       <SearchResultList results={searchResultList} searchPageTarget={props.searchPageTarget}/>
     </Auxiliary>
