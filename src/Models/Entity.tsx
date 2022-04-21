@@ -2,7 +2,7 @@ import { Searchable } from "../Components/HigherOrderComponents/SearchPage/Searc
 import { ReactElement } from "react";
 
 export class Entity implements Searchable{
-  id: string = "";
+  _id: string = "";
   name: string = "";
 
   display(): ReactElement {

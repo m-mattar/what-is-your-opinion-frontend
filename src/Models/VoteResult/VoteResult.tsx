@@ -9,13 +9,13 @@ import { Searchable } from "../../Components/HigherOrderComponents/SearchPage/Se
 import React, { ReactElement } from "react";
 
 export class VoteResult implements Searchable{
-  id: string = "";
+  _id: string = "";
   entity: string = "";
   result: number[] = [0, 0];
   positivePercentage: number = 0;
 
   constructor(_id : string, _entity: string, _result: number[], _positivePercentage: number) {
-    this.id = _id
+    this._id = _id
     this.entity = _entity
     this.result = _result
     this.positivePercentage = _positivePercentage
