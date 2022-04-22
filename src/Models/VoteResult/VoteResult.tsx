@@ -1,12 +1,7 @@
-/*export type VoteResult = {
-  id: string,
-  entity: string,
-  positivePercentage: number,
-};*/
-
 import "./styles.css"
 import { Searchable } from "../../Components/HigherOrderComponents/SearchPage/Searchable";
 import React, { ReactElement } from "react";
+import { VoteResultBar } from "../../Components/Elements/VoteResultBar";
 
 export class VoteResult implements Searchable{
   _id: string = "";
@@ -23,18 +18,13 @@ export class VoteResult implements Searchable{
 
   display(): ReactElement {
     return (
-      <div className={"card"}>
-        <div className={"container mt-1 mx-2 pb-1"}>
-          <div className={"typography has-text-centered"}> {this.entity} </div>
-          {/*TODO: Add Icon to the right of the progress bar when converting it to a clickable*/}
-          <div className={"progress-wrapper"}>
-            <progress
-              className={"progress is-large is-success"}
-              value={this.positivePercentage}
-              max="100"
-            />
-            <p className={"progress-value has-text-black"}>{this.positivePercentage}%</p>
-          </div>
+      <div className={"card-boxed mt-5"}>
+        <div className={"container mt-5 mx-2 pb-2"}>
+          <div className={"typography has-text-right mx-3 pb-2"}> {this.entity} </div>
+          <VoteResultBar
+           id={this._id}
+           positivePercentage={this.positivePercentage}
+          />
         </div>
       </div>
     );

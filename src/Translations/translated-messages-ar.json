@@ -8,5 +8,7 @@
     "results_search_choose_vote": "اختر نتيجة تصويت",
     "results_search_page_title": "النتاىْج السابقة",
     "voting_page_submit_vote_button": "ارسل صوتك",
-    "voting_page_title": "انشاء تصويت"
+    "voting_page_title": "انشاء تصويت",
+    "voting_results_bar_left_side_title":  "ايجابي",
+    "voting_results_bar_right_side_title":  "سلبي"
 }

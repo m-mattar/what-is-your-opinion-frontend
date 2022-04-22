@@ -4,6 +4,7 @@ import { translationProvider } from '../Translations/TranslationProvider';
 import { AppRouter } from '../AppRouter';
 import { LANGUAGES, TRANSLATION_KEY } from "../Translations/TranslationUtils";
 import { Text, TEXT_TYPE } from "../Components/Elements/Text";
+import "./style.css"
 
 function App() {
   console.log("APP START")
@@ -12,9 +13,10 @@ function App() {
   translationProvider.setTranslations(LANGUAGES.AR);
 
   return (
-    <section className={"container is-fullheight"}>
+    <section className={"App container is-fullheight"}>
       <div className={"hero-body"}>
         <div className={"column is-half is-offset-2"}>
+          <br/>
           <Text
             translationKey={TRANSLATION_KEY.app_title}
             textType={TEXT_TYPE.app_title}

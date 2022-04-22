@@ -14,10 +14,13 @@ type TextProps = {
 }
 
 export function Text(props: TextProps) {
-  let classname = props.textType === TEXT_TYPE.app_title ? "title" : "subtitle";
+  let classname = props.textType === TEXT_TYPE.app_title ?
+    "title is-size-1"
+    : "subtitle ";
+
   return (
-    <h1 className={classname + " has-text-centered"}>
+    <div className={classname + " has-text-centered has-text-weight-bold"}>
       {translationProvider.getTranslation(props.translationKey)}
-    </h1>
+    </div>
   );
 }

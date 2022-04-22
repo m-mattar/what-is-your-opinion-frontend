@@ -22,7 +22,7 @@ export function RedirectionButton(props: RedirectionButtonProps) {
 
   return (
     <BaseButton
-      classname={"button is-normal is-fullwidth is-centered is-black is-responsive"}
+      classname={`button is-normal is-centered is-black is-responsive is-rounded`}
       onClick={onClick}
       title={translationProvider.getTranslation(TRANSLATION_KEY.create_question_page_redirect_button)}
       isEnabled={props.isEnabled}
