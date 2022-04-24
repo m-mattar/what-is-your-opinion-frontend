@@ -6,6 +6,7 @@ export const LANGUAGES = {
 export enum TRANSLATION_KEY {
     app_title = "app_title",
     create_question_choose_entity = "create_question_choose_entity",
+    create_question_choose_entity_category = "create_question_choose_entity_category",
     create_question_page_redirect_button = "create_question_page_redirect_button",
     create_question_page_title = "create_question_page_title",
     create_question_success = "create_question_success",

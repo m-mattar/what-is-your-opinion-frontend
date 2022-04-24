@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { VoteResult } from "../../../Models/VoteResult/VoteResult";
 import { Text, TEXT_TYPE } from "../../Elements/Text";
 import { SEARCH_PAGE_TARGET, searchPageTargetToTranslationKey } from "./Utils";
 import Auxiliary from "../Auxiliary";
 import { SearchBar } from "../../Elements/SearchBar";
 import { SearchResultList } from "./SearchResultList";
+import { Searchable } from "./Searchable";
 
 type SearchPageProps = {
   searchPageTarget: SEARCH_PAGE_TARGET,
@@ -13,12 +13,12 @@ type SearchPageProps = {
 
 export function SearchPage(props: SearchPageProps) {
   const [searchInput, setSearchInput] = useState('' as string);
-  const [searchResultListDefault, setSearchResultListDefault] = useState([] as VoteResult[]);
-  const [searchResultList, setSearchResultList] = useState([] as VoteResult[]);
+  const [searchResultListDefault, setSearchResultListDefault] = useState([] as Searchable[]);
+  const [searchResultList, setSearchResultList] = useState([] as Searchable[]);
 
   const filterResultList = (input: string) => {
     const filtered = searchResultListDefault.filter(result => {
-      return result.entity.toLowerCase().includes(input.toLowerCase())
+      return result.getTitle().toLowerCase().includes(input.toLowerCase())
     })
     setSearchInput(input);
     setSearchResultList(filtered);
