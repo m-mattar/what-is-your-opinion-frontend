@@ -16,7 +16,7 @@ export function SearchResultList(props: SearchResultListProps) {
         </div>
       );
     }, [])
-  if(props.displayType == DISPLAY_TYPE.SINGLE_COLUMN){
+  if(props.displayType === DISPLAY_TYPE.SINGLE_COLUMN){
     return (
       <div>
         {mappedResults}

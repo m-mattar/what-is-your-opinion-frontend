@@ -1,7 +1,6 @@
 import * as React from "react";
 import Auxiliary from "../../Components/HigherOrderComponents/Auxiliary";
 import { Question } from "../../Models/Question";
-import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
 import { QuestionCard } from "../../Components/Elements/QuestionCard/QuestionCard";
 import { useState } from "react";
@@ -10,6 +9,7 @@ import { VoteOption } from "../../Models/VoteOption";
 import { Button } from "../../Components/Elements/Button";
 import { translationProvider } from "../../Translations/TranslationProvider";
 import "./style.css"
+import { EncryptionNote } from "../../Components/Elements/EncryptionNote";
 
 type VotingPageProps = {
   question: Question;
@@ -39,15 +39,7 @@ export function VotingPage(props: VotingPageProps) {
   return (
     <Auxiliary>
       <br/><br/>
-      <span className={"icon-text"}>
-        <Text
-          translationKey={TRANSLATION_KEY.voting_page_encryption_note}
-          textType={TEXT_TYPE.PAGE_NOTE}
-        />
-        <span className={"icon is-small"}>
-          <i className="fa-solid fa-lock"></i>
-        </span>
-      </span>
+      <EncryptionNote/>
       <div className={`box; box-shadow:none`}>
         <QuestionCard question={props.question}/>
         <br/>
