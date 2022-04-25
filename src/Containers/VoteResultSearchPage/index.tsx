@@ -7,7 +7,7 @@ import { REDIRECTION_BUTTON_TYPE, RedirectionButton } from "../../Components/Ele
 
 export function VoteResultSearchPage() {
   const fetchInitialData = () => {
-    let initialResults: VoteResult[] = resultService.getInitialSearchPageResults();
+    let initialResults: VoteResult[] = resultService.getInitialVoteResults();
     return initialResults;
   }
 

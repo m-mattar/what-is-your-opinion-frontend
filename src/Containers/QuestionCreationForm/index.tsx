@@ -5,10 +5,12 @@ import { SearchPage } from "../../Components/HigherOrderComponents/SearchPage";
 import { SEARCH_PAGE_TARGET } from "../../Components/HigherOrderComponents/SearchPage/Utils";
 import { VoteResult } from "../../Models/VoteResult/VoteResult";
 import { resultService } from "../../Services/ResultService";
+import { EntityCategory } from "../../Models/EntityCategory/EntityCategory";
+import { entityService } from "../../Services/EntityService";
 
 export function QuestionCreationForm() {
   const fetchInitialData = () => {
-    let initialResults: VoteResult[] = resultService.getInitialSearchPageResults();
+    let initialResults: EntityCategory[] = entityService.getEntityCategories();
     return initialResults;
   }
 
@@ -21,7 +23,7 @@ export function QuestionCreationForm() {
 
       <SearchPage
         searchPageTarget={SEARCH_PAGE_TARGET.ENTITY_CATEGORIES}
-        initialResults={fetchInitialData()} //TODO: Add Initial Results
+        initialResults={fetchInitialData()}
       />
     </Auxiliary>
   );

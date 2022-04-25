@@ -6,12 +6,18 @@ export class EntityCategory implements Searchable{
   name: string = "";
   imageName: string = "";
 
+  constructor(_id : string, _entity: string, _imageName: string) {
+    this._id = _id
+    this.name = _entity
+    this.imageName = _imageName
+  }
+
   display(): ReactElement {
     return (
       <div className="card">
         <div className="card-image">
-          <figure className="image is-4by3">
-            <img src= {"./EntityCategoryImages" + this.imageName} alt= {this.imageName}/>
+          <figure className="image is-square">
+            <img src= {"./EntityCategoryImages/" + this.imageName} alt= {this.imageName}/>
           </figure>
         </div>
       </div>

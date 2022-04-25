@@ -40,7 +40,7 @@ class ResultService {
     return [MOCK_RESULT1, MOCK_RESULT2, MOCK_RESULT3];
   }
 
-  public getInitialSearchPageResults(): VoteResult[] {
+  public getInitialVoteResults(): VoteResult[] {
     //REMOVE THIS WHEN CONNECTING
     return this.getMocks();
 
