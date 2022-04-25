@@ -7,7 +7,7 @@ type BaseButtonProps = {
     isEnabled: boolean,
 }
 
-export function BaseButton(props: BaseButtonProps) {
+export function Button(props: BaseButtonProps) {
   return (
     <button
       className={props.classname}
