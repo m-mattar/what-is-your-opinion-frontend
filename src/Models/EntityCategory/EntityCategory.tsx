@@ -1,3 +1,4 @@
+import "./styles.css"
 import { Searchable } from "../../Components/HigherOrderComponents/SearchPage/Searchable";
 import { ReactElement } from "react";
 
@@ -6,26 +7,27 @@ export class EntityCategory implements Searchable{
   name: string = "";
   imageName: string = "";
 
-  constructor(_id : string, _entity: string, _imageName: string) {
+  constructor(_id : string, _entityCategory: string, _imageName: string) {
     this._id = _id
-    this.name = _entity
+    this.name = _entityCategory
     this.imageName = _imageName
   }
 
   display(): ReactElement {
     return (
-      <div className="card">
-        <div className="card-image">
-          <figure className="image is-square">
-            <img src= {"./EntityCategoryImages/" + this.imageName} alt= {this.imageName}/>
-          </figure>
+      <div className={"image-content"}>
+        <div className={"image"}>
+          <img src= {this.imageName} alt= {this.imageName}/>
+        </div>
+        <div className="centered">
+          {this.name}
         </div>
       </div>
     )
   }
 
   getTitle(): string {
-    return "";
+    return this.name;
   }
 
   onClick(): void {

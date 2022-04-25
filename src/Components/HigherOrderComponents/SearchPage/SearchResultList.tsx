@@ -1,9 +1,10 @@
 import { SEARCH_PAGE_TARGET } from "./Utils";
-import { Searchable } from "./Searchable";
+import { DISPLAY_TYPE, Searchable } from "./Searchable";
 
 type SearchResultListProps = {
   results: Searchable[],
   searchPageTarget: SEARCH_PAGE_TARGET,
+  displayType: DISPLAY_TYPE,
 }
 
 export function SearchResultList(props: SearchResultListProps) {
@@ -15,10 +16,23 @@ export function SearchResultList(props: SearchResultListProps) {
         </div>
       );
     }, [])
+  if(props.displayType == DISPLAY_TYPE.SINGLE_COLUMN){
+    return (
+      <div>
+        {mappedResults}
+      </div>
+    )
+  }
 
+  let n = mappedResults.length
   return (
-    <div className={`box; box-shadow:none; box-list`}>
-      { mappedResults }
+    <div className="columns is-centered">
+      <div className="column">
+        {mappedResults.slice(0, (n + 1) / 2)}
+      </div>
+      <div className="column">
+        {mappedResults.slice((n + 1) / 2)}
+      </div>
     </div>
   );
 }

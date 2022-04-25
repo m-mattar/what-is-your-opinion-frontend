@@ -4,10 +4,11 @@ import { SEARCH_PAGE_TARGET, searchPageTargetToTranslationKey } from "./Utils";
 import Auxiliary from "../Auxiliary";
 import { SearchBar } from "../../Elements/SearchBar";
 import { SearchResultList } from "./SearchResultList";
-import { Searchable } from "./Searchable";
+import { DISPLAY_TYPE, Searchable } from "./Searchable";
 
 type SearchPageProps = {
   searchPageTarget: SEARCH_PAGE_TARGET,
+  displayType: DISPLAY_TYPE,
   initialResults: any, //has to be an array
 }
 
@@ -43,7 +44,11 @@ export function SearchPage(props: SearchPageProps) {
         keyword={searchInput}
         filterKeyword={filterResultList}
       />
-      <SearchResultList results={searchResultList} searchPageTarget={props.searchPageTarget}/>
+      <SearchResultList
+        results={searchResultList}
+        searchPageTarget={props.searchPageTarget}
+        displayType={props.displayType}
+      />
     </Auxiliary>
   );
 }

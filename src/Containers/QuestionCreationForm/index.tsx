@@ -3,11 +3,10 @@ import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
 import { SearchPage } from "../../Components/HigherOrderComponents/SearchPage";
 import { SEARCH_PAGE_TARGET } from "../../Components/HigherOrderComponents/SearchPage/Utils";
-import { VoteResult } from "../../Models/VoteResult/VoteResult";
-import { resultService } from "../../Services/ResultService";
 import { EntityCategory } from "../../Models/EntityCategory/EntityCategory";
 import { entityService } from "../../Services/EntityService";
 import * as React from "react";
+import { DISPLAY_TYPE } from "../../Components/HigherOrderComponents/SearchPage/Searchable";
 
 export function QuestionCreationForm() {
   const fetchInitialData = () => {
@@ -27,6 +26,7 @@ export function QuestionCreationForm() {
       <SearchPage
         searchPageTarget={SEARCH_PAGE_TARGET.ENTITY_CATEGORIES}
         initialResults={fetchInitialData}
+        displayType={DISPLAY_TYPE.DOUBLE_COLUMNS}
       />
     </Auxiliary>
   );

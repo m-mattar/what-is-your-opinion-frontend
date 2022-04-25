@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.image-content {
+    position: relative;
+    margin:10px;
+    display: inline-block;
+}
+
+.image-content img {
+    display: block;
+    border-radius: 8px;
+}
+
+.image:after {
+    position: absolute;
+    content:"";
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    background: linear-gradient(0deg, rgba(5, 5, 5, 0.5) 0%, rgba(0, 0, 0, 0) 49.56%);
+    border-radius: 8px;
+}
+
+.centered {
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

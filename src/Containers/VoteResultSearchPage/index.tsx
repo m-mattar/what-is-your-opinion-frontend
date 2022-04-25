@@ -7,6 +7,7 @@ import React from "react";
 import { Button } from "../../Components/Elements/Button";
 import { translationProvider } from "../../Translations/TranslationProvider";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
+import { DISPLAY_TYPE } from "../../Components/HigherOrderComponents/SearchPage/Searchable";
 
 export function VoteResultSearchPage() {
   const fetchInitialData = () => {
@@ -34,6 +35,7 @@ export function VoteResultSearchPage() {
       <SearchPage
         searchPageTarget={SEARCH_PAGE_TARGET.VOTE_RESULTS}
         initialResults={fetchInitialData}
+        displayType={DISPLAY_TYPE.SINGLE_COLUMN}
       />
     </Auxiliary>
   );

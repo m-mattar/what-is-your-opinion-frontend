@@ -10,7 +10,7 @@ function App() {
   console.log("APP START")
 
   // need to have a state for the languages and update Messages accordingly
-  translationProvider.setTranslations(LANGUAGES.AR);
+  translationProvider.setTranslations(LANGUAGES.EN);
 
   return (
     <section className={"App container is-fullheight"}>
