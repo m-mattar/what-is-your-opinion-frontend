@@ -19,7 +19,7 @@ function App() {
           <br/>
           <Text
             translationKey={TRANSLATION_KEY.app_title}
-            textType={TEXT_TYPE.app_title}
+            textType={TEXT_TYPE.APP_TITLE}
           />
           <AppRouter/>
         </div>

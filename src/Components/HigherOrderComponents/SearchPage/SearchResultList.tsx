@@ -17,7 +17,7 @@ export function SearchResultList(props: SearchResultListProps) {
     }, [])
 
   return (
-    <div className={`box; box-shadow:none`}>
+    <div className={`box; box-shadow:none; box-list`}>
       { mappedResults }
     </div>
   );

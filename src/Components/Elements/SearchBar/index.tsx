@@ -25,7 +25,7 @@ export function SearchBar(props: SearchBarProps) {
             }
         />
         <span className={"icon is-small is-left"}>
-          <i className={"fa-regular fa-magnifying-glass"}></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </span>
       </p>
     </div>

@@ -12,6 +12,7 @@ export function BaseButton(props: BaseButtonProps) {
     <button
       className={props.classname}
       onClick={props.onClick}
+      disabled={!props.isEnabled}
     > {props.title} </button>
   );
 }

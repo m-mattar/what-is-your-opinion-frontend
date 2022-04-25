@@ -1,0 +1,1 @@
+export const BASE_URL = "http://what-is-your-opinion.herokuapp.com";

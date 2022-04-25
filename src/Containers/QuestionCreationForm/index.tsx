@@ -7,6 +7,7 @@ import { VoteResult } from "../../Models/VoteResult/VoteResult";
 import { resultService } from "../../Services/ResultService";
 import { EntityCategory } from "../../Models/EntityCategory/EntityCategory";
 import { entityService } from "../../Services/EntityService";
+import * as React from "react";
 
 export function QuestionCreationForm() {
   const fetchInitialData = () => {
@@ -16,14 +17,16 @@ export function QuestionCreationForm() {
 
   return (
     <Auxiliary>
+      <br/>
+      <br/>
       <Text
         translationKey={TRANSLATION_KEY.create_question_page_title}
-        textType={TEXT_TYPE.page_title}
+        textType={TEXT_TYPE.PAGE_TITLE}
       />
 
       <SearchPage
         searchPageTarget={SEARCH_PAGE_TARGET.ENTITY_CATEGORIES}
-        initialResults={fetchInitialData()}
+        initialResults={fetchInitialData}
       />
     </Auxiliary>
   );

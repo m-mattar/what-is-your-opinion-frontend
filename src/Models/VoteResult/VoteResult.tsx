@@ -19,7 +19,7 @@ export class VoteResult implements Searchable{
   display(): ReactElement {
     return (
       <div className={"card-boxed mt-5"}>
-        <div className={"container mt-5 mx-2 pb-2"}>
+        <div className={"container mx-2 pb-2"}>
           <div className={"typography has-text-right mx-3 pb-2"}> {this.entity} </div>
           <VoteResultBar
            id={this._id}

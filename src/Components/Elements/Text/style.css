@@ -1,0 +1,9 @@
+.app-title {
+    position: relative;
+    width: border-box;
+    font-style: normal;
+    font-weight: 711;
+    font-size: 50px;
+    line-height: 66px;
+    color: #000000;
+}

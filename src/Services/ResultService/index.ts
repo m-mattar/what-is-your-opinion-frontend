@@ -1,7 +1,6 @@
 import { VoteResult } from "../../Models/VoteResult/VoteResult";
 import axios from "axios";
-
-const BASE_URL = "http://what-is-your-opinion.herokuapp.com";
+import { BASE_URL } from "../ServicesUtils";
 
 class ResultService {
   private doGetSearchPageResults = async(urlParams: string) => {

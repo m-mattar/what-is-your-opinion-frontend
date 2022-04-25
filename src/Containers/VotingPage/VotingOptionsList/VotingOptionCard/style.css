@@ -1,0 +1,27 @@
+
+/* positive */
+.color-0 {
+    background: linear-gradient(92.04deg, #2F48F4 50%, #A851B0 100%);
+}
+
+/* negative */
+.color-1 {
+    background: linear-gradient(99.23deg, #EC7533 50%, #E14791 100%);
+}
+
+.header-color {
+    color: white;
+}
+
+.selectable-card {
+    padding-right: 2.5%;
+    padding-left: 2.5%;
+    max-width: content-box;
+    border-radius: 22px;
+    text-align: center;
+}
+
+.selected-card {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}

@@ -1,0 +1,37 @@
+.question-card {
+    position: relative;
+    height: 140px;
+    background: #FAFAFA;
+    border-radius: 22px;
+    text-align: center;
+    inline-size: max-content;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.text-question {
+    position: relative;
+    /*transform: translate(-50%, -50%);*/
+    text-align: center;
+    flex: 1;
+    top: 20%;
+    vertical-align: center;
+    /*line-height: 100px;*/
+    user-select: none;
+    wrap-option: true;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.question-type {
+    color: black;
+}
+
+.question-entity {
+    background: -webkit-linear-gradient(#0426db, #48bfe3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -12,6 +12,9 @@ export function VotingOptionsList(props: VotingOptionsListProps) {
 
   const onItemSelected = (index: number, vote: VoteOption) => {
     props.onChangeSelection(vote);
+    if(selectedItem === index) {
+      return setSelectedItem(-1)
+    }
     return setSelectedItem(index);
   }
 
@@ -20,14 +23,15 @@ export function VotingOptionsList(props: VotingOptionsListProps) {
       return <VotingOptionCard
         key={vote.id}
         vote={vote}
+        color={i}
         onSelection={() => onItemSelected(i, vote)}
-        isSelected={selectedItem === i ? true : false}
+        isSelected={selectedItem === i}
       />
     }, [])
 
   return (
-    <div>
-      { mappedVotingOptions }
+    <div className={"columns is-multiline"}>
+        { mappedVotingOptions }
     </div>
   );
 }

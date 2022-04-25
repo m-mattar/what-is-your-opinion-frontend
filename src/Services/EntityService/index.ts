@@ -1,9 +1,7 @@
 import { EntityCategory } from "../../Models/EntityCategory/EntityCategory";
 import { translationProvider } from "../../Translations/TranslationProvider";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
-
-
-const BASE_URL = "http://what-is-your-opinion.herokuapp.com";
+import { BASE_URL } from "../ServicesUtils";
 
 class EntityService {
 

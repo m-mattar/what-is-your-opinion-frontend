@@ -1,26 +1,31 @@
 import { VoteOption } from "../../../../Models/VoteOption";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import "./style.css"
 
 type VotingOptionCardProps = {
   vote: VoteOption,
+  color: number,
   onSelection: any,
   isSelected: boolean,
 }
 
 export function VotingOptionCard(props: VotingOptionCardProps) {
-  let classnameSelection = "votingOption " + (props.isSelected ? "isSelected" : "notSelected");
+  const [classnameSelection, setClassnameSelection] = useState( "" as string);
 
   useEffect(() => {
-    console.log("USE EFFECT", props.vote.option, " ", classnameSelection)
+    let isSelected = (props.isSelected ? "selected-card" : "");
+    setClassnameSelection(isSelected)
   })
 
   return (
-    <div className={"card"} onClick={props.onSelection} card-background-color={`hsl(0, 10%, 100%)`}>
-      <header className={"card-header"}>
-        <p className={"card-header-title"}>
-          {props.vote.option}
-        </p>
-      </header>
+    <div className={"column is-half"}>
+      <div className={"selectable-card color-"+ props.color + " " + classnameSelection} onClick={props.onSelection}>
+        <header className={"card-header"}>
+          <span className={"card-header-title header-color"}>
+            {props.vote.option}
+          </span>
+        </header>
+      </div>
     </div>
   );
 }
