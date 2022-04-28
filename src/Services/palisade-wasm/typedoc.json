@@ -1,0 +1,9 @@
+{
+	"entryPoints": ["index.ts"],
+	"out": "docs-ts",
+	"readme": "./doc/API-README.md",
+	"disableSources": true,
+	"toc": [
+		"CreateBinfheModule", "CreatePKEModule"
+	]
+}

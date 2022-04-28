@@ -3,6 +3,8 @@ import { VoteOption } from "../../Models/VoteOption";
 import { BASE_URL } from "../ServicesUtils";
 import axios from "axios";
 
+const factory = require("../palisade-wasm/lib/palisade_pke")
+
 class VotingService {
   public getQuestionById(questionId: string): Question {
     let Mock_Question = {
@@ -41,9 +43,9 @@ class VotingService {
 
   private deserializePublicKey(str: string,
                                module: {
-                                  DeserializePublicKeyFromBuffer: (arg0: Uint8Array, arg1: any) => any;
-                                  SerType: { BINARY: any; };
-                              }) {
+                                 DeserializePublicKeyFromBuffer: (arg0: Uint8Array, arg1: any) => any;
+                                 SerType: { BINARY: any; };
+                               }) {
     var strarr = str.split(',');
     var numarr = strarr.map((el) => parseInt(el))
     var uint8array = Uint8Array.from(numarr);
@@ -54,89 +56,86 @@ class VotingService {
 
   private serializePublicKey(obj: any,
                              module: {
-                              SerializePublicKeyToBuffer: (arg0: any, arg1: any) => any;
-                              SerType: { BINARY: any; };
-                            }) {
+                               SerializePublicKeyToBuffer: (arg0: any, arg1: any) => any;
+                               SerType: { BINARY: any; };
+                             }) {
     const uint8arr = module.SerializePublicKeyToBuffer(obj, module.SerType.BINARY)
     return uint8arr.join()
   }
 
-  public async collectPhase(module: any,
-                            cc: { KeyGen: () => any; MultipartyKeyGen: (arg0: any) => any; },
-                            pollID: any) {
-    var secretKeys = []
-    var realJointPublicKey = null
+  public async collect(pollID: any,
+                       oneTimeCode: any,
+                       location: any) {
 
-    const getOneTimeCodesRes = await axios({
+    const module = await factory()
+    var cc = null
+
+    try {
+      const plaintextModulus = 65537
+      const sigma = 3.2
+      const depth = 2
+
+      cc = new module.GenCryptoContextBGVrns(depth,
+        plaintextModulus, module.SecurityLevel.HEStd_128_classic,
+        sigma, depth, module.MODE.OPTIMIZED, module.KeySwitchTechnique.HYBRID)
+
+      cc.Enable(module.PKESchemeFeature.ENCRYPTION)
+      cc.Enable(module.PKESchemeFeature.SHE)
+      cc.Enable(module.PKESchemeFeature.MULTIPARTY)
+
+    } catch (err) {
+      console.error(err)
+      return 1
+    }
+
+    const getCollectRes = await axios({
       method: 'post',
-      url: `${BASE_URL}/poll/oneTimeCodes`,
+      url: `${BASE_URL}/collect/jointPublicKey`,
       data: {
         id: pollID
       }
     })
 
-    const oneTimeCodes = getOneTimeCodesRes.data
+    const numVoters = getCollectRes.data.numVoters
+    const jointPublicKeyStr = getCollectRes.data.jointPublicKey
 
-    for (var i = 0; i < 3; i += 1) {
-      console.log('Collecting: ' + i)
+    var keyPair = null
 
-      const getCollectRes = await axios({
-        method: 'post',
-        url: `${BASE_URL}/collect/jointPublicKey`,
-        data: {
-          id: pollID
-        }
-      })
-
-      const numVoters = getCollectRes.data.numVoters
-      const jointPublicKeyStr = getCollectRes.data.jointPublicKey
-
-      var keyPair = null
-
-      if (!jointPublicKeyStr) {
-        keyPair = cc.KeyGen()
-      } else {
-        const jointPublicKey = this.deserializePublicKey(jointPublicKeyStr, module)
-        keyPair = cc.MultipartyKeyGen(jointPublicKey)
-      }
-
-      realJointPublicKey = keyPair.publicKey
-
-      secretKeys.push(keyPair.secretKey)
-      const newJointPublicKeyStr = this.serializePublicKey(keyPair.publicKey, module)
-
-      var location = ''
-      if (i >= 0 && i < 36) {
-        location = 'بيروت'
-      } else if (i >= 36 && i < 92) {
-        location = 'البقاع'
-      } else if (i >= 92 && i < 225) {
-        location = 'جبل لبنان'
-      } else if (i >= 255 && i < 285) {
-        location = 'النبطية'
-      } else if (i >= 285 && i < 370) {
-        location = 'الشمال'
-      } else {
-        location = 'الجنوب'
-      }
-
-      await axios({
-        method: 'post',
-        url: `${BASE_URL}/collect`,
-        data: {
-          id: pollID,
-          newNumVoters: numVoters + 1,
-          newJointPublicKey: newJointPublicKeyStr,
-          oneTimeCode: oneTimeCodes[i].code,
-          location: location
-        }
-      })
+    if (!jointPublicKeyStr) {
+      keyPair = cc.KeyGen()
+    } else {
+      const jointPublicKey = this.deserializePublicKey(jointPublicKeyStr, module)
+      keyPair = cc.MultipartyKeyGen(jointPublicKey)
     }
 
-    return {
-      secretKeys,
-      realJointPublicKey
-    }
+    const newJointPublicKeyStr = this.serializePublicKey(keyPair.publicKey, module)
+
+    // var location = ''
+    // if (i >= 0 && i < 36) {
+    //   location = 'بيروت'
+    // } else if (i >= 36 && i < 92) {
+    //   location = 'البقاع'
+    // } else if (i >= 92 && i < 225) {
+    //   location = 'جبل لبنان'
+    // } else if (i >= 255 && i < 285) {
+    //   location = 'النبطية'
+    // } else if (i >= 285 && i < 370) {
+    //   location = 'الشمال'
+    // } else {
+    //   location = 'الجنوب'
+    // }
+
+    await axios({
+      method: 'post',
+      url: `${BASE_URL}/collect`,
+      data: {
+        id: pollID,
+        newNumVoters: numVoters + 1,
+        newJointPublicKey: newJointPublicKeyStr,
+        oneTimeCode: oneTimeCode,
+        location: location
+      }
+    })
   }
 
 
@@ -211,7 +210,7 @@ class VotingService {
   }
 
   public async decryptPhase(module: any, cc: any, pollID: any, secretKeys: any[],
-                              realJointEncryption: any, realPartialDecryptions: any) {
+                            realJointEncryption: any, realPartialDecryptions: any) {
     const getOneTimeCodesRes = await axios({
       method: 'post',
       url: `${BASE_URL}/poll/oneTimeCodes`,
@@ -280,62 +279,6 @@ class VotingService {
 
   }
 
-  public realResult(module: any, cc: any, realEncryptedVotes: any[], secretKeys: any[]) {
-    var otherCC = null
-
-    try {
-      const plaintextModulus = 65537
-      const sigma = 3.2
-      const depth = 2
-
-      otherCC = new module.GenCryptoContextBGVrns(depth,
-        plaintextModulus, module.SecurityLevel.HEStd_128_classic,
-        sigma, depth, module.MODE.OPTIMIZED,module.KeySwitchTechnique.HYBRID)
-
-      otherCC.Enable(module.PKESchemeFeature.ENCRYPTION)
-      otherCC.Enable(module.PKESchemeFeature.SHE)
-      otherCC.Enable(module.PKESchemeFeature.MULTIPARTY)
-
-    } catch (err) {
-      console.error(err)
-      return 1
-    }
-
-
-    const ciphertextAdd12 = cc.EvalAddCipherCipher(realEncryptedVotes[0], realEncryptedVotes[1]);
-    const ciphertextAdd123 = cc.EvalAddCipherCipher(ciphertextAdd12, realEncryptedVotes[2]);
-
-    const otherCiphertextAdd12 = otherCC.EvalAddCipherCipher(realEncryptedVotes[0], realEncryptedVotes[1]);
-    const otherCiphertextAdd123 = otherCC.EvalAddCipherCipher(otherCiphertextAdd12, realEncryptedVotes[2]);
-
-    if (this.serializeCiphertext(ciphertextAdd123, module) === this.serializeCiphertext(otherCiphertextAdd123, module)) {
-      console.log('local experiment equal')
-    }
-
-    let ciphertextPartial1 =
-      cc.MultipartyDecryptLead(secretKeys[0], [ciphertextAdd123]);
-
-    let ciphertextPartial2 =
-      cc.MultipartyDecryptMain(secretKeys[1], [ciphertextAdd123]);
-
-    let ciphertextPartial3 =
-      cc.MultipartyDecryptMain(secretKeys[2], [ciphertextAdd123]);
-
-    const realPartialDecryptions = [
-      ciphertextPartial1.get(0),
-      ciphertextPartial2.get(0),
-      ciphertextPartial3.get(0)
-    ]
-
-    const plaintextMultipartyNew = cc.MultipartyDecryptFusion(realPartialDecryptions);
-
-    console.log(plaintextMultipartyNew.toString())
-
-    return {
-      realJointEncryption: ciphertextAdd123,
-      realPartialDecryptions
-    }
-  }
 };
 
 export const votingService = new VotingService();

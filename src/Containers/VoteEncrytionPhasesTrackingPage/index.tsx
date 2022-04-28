@@ -47,7 +47,6 @@ export function VoteEncryptionPhasesTrackingPage(props: VoteEncryptionPhasesTrac
 
   if(props.encryptionPhase === ENCRYPTION_PHASE.PHASE_1) {
     button = phaseOneButtonVerifyVotes();
-    console.log(button)
   } else if (props.encryptionPhase === ENCRYPTION_PHASE.PHASE_2) {
     button = phaseTwoButtonRedirectToVoteResultsPage();
   }

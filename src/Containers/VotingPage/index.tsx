@@ -34,6 +34,9 @@ export function VotingPage(props: VotingPageProps) {
     // save key and selectedVotingOpion in Local Storage
     console.log("SUBMITTING: ", selectedVotingOption);
     // redirect
+
+    // call collect()
+    //
   }
 
   return (
