@@ -4,7 +4,7 @@ import Auxiliary from "../../Components/HigherOrderComponents/Auxiliary";
 import { Text, TEXT_TYPE } from "../../Components/Elements/Text";
 import { EncryptionNote } from "../../Components/Elements/EncryptionNote";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
-import { ENCRYPTION_PHASE } from "../../Utils/RouterUtils";
+import { ENCRYPTION_PHASE, redirectionProvider } from "../../Utils/RouterUtils";
 import { SuccessCheck } from "../../Components/Elements/SuccessCheck";
 import { Button } from "../../Components/Elements/Button";
 import { translationProvider } from "../../Translations/TranslationProvider";
@@ -23,7 +23,7 @@ export function VoteEncryptionPhasesTrackingPage(props: VoteEncryptionPhasesTrac
     return (
       <Button
         classname={buttonClassName}
-        onClick={() => console.log("VERIFY CLICK")}
+        onClick={redirectionProvider.redirectToVerificationPage}
         title={translationProvider.getTranslation(
           TRANSLATION_KEY.encryption_phase1_vote_success_button
         )}
@@ -36,7 +36,7 @@ export function VoteEncryptionPhasesTrackingPage(props: VoteEncryptionPhasesTrac
     return (
       <Button
         classname={buttonClassName}
-        onClick={() => console.log("REDIRECT to Vote Results Page")}
+        onClick={redirectionProvider.redirectToVoteResultSearchPage}
         title={translationProvider.getTranslation(
           TRANSLATION_KEY.encryption_phase2_decrypt_success_button
         )}

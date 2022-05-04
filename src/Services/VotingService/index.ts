@@ -3,7 +3,7 @@ import { VoteOption } from "../../Models/VoteOption";
 import { BASE_URL } from "../ServicesUtils";
 import axios from "axios";
 
-const factory = require("../palisade-wasm/lib/palisade_pke")
+// const factory = {}; // = require("../palisade-wasm/lib/palisade_pke")
 
 class VotingService {
   public getQuestionById(questionId: string): Question {
@@ -67,75 +67,64 @@ class VotingService {
                        oneTimeCode: any,
                        location: any) {
 
-    const module = await factory()
-    var cc = null
-
-    try {
-      const plaintextModulus = 65537
-      const sigma = 3.2
-      const depth = 2
-
-      cc = new module.GenCryptoContextBGVrns(depth,
-        plaintextModulus, module.SecurityLevel.HEStd_128_classic,
-        sigma, depth, module.MODE.OPTIMIZED, module.KeySwitchTechnique.HYBRID)
-
-      cc.Enable(module.PKESchemeFeature.ENCRYPTION)
-      cc.Enable(module.PKESchemeFeature.SHE)
-      cc.Enable(module.PKESchemeFeature.MULTIPARTY)
-
-    } catch (err) {
-      console.error(err)
-      return 1
-    }
-
-    const getCollectRes = await axios({
-      method: 'post',
-      url: `${BASE_URL}/collect/jointPublicKey`,
-      data: {
-        id: pollID
-      }
-    })
-
-    const numVoters = getCollectRes.data.numVoters
-    const jointPublicKeyStr = getCollectRes.data.jointPublicKey
-
-    var keyPair = null
-
-    if (!jointPublicKeyStr) {
-      keyPair = cc.KeyGen()
-    } else {
-      const jointPublicKey = this.deserializePublicKey(jointPublicKeyStr, module)
-      keyPair = cc.MultipartyKeyGen(jointPublicKey)
-    }
-
-    const newJointPublicKeyStr = this.serializePublicKey(keyPair.publicKey, module)
-
-    // var location = ''
-    // if (i >= 0 && i < 36) {
-    //   location = 'بيروت'
-    // } else if (i >= 36 && i < 92) {
-    //   location = 'البقاع'
-    // } else if (i >= 92 && i < 225) {
-    //   location = 'جبل لبنان'
-    // } else if (i >= 255 && i < 285) {
-    //   location = 'النبطية'
-    // } else if (i >= 285 && i < 370) {
-    //   location = 'الشمال'
-    // } else {
-    //   location = 'الجنوب'
+    // const module = await factory()
+    // var cc = null
+    //
+    // try {
+    //   const plaintextModulus = 65537
+    //   const sigma = 3.2
+    //   const depth = 2
+    //
+    //   cc = new module.GenCryptoContextBGVrns(depth,
+    //     plaintextModulus, module.SecurityLevel.HEStd_128_classic,
+    //     sigma, depth, module.MODE.OPTIMIZED, module.KeySwitchTechnique.HYBRID)
+    //
+    //   cc.Enable(module.PKESchemeFeature.ENCRYPTION)
+    //   cc.Enable(module.PKESchemeFeature.SHE)
+    //   cc.Enable(module.PKESchemeFeature.MULTIPARTY)
+    //
+    // } catch (err) {
+    //   console.error(err)
+    //   return 1
     // }
+    //
+    // const getCollectRes = await axios({
+    //   method: 'post',
+    //   url: `${BASE_URL}/collect/jointPublicKey`,
+    //   data: {
+    //     id: pollID
+    //   }
+    // })
+    //
+    // const numVoters = getCollectRes.data.numVoters
+    // const jointPublicKeyStr = getCollectRes.data.jointPublicKey
+    //
+    // var keyPair = null
+    //
+    // if (!jointPublicKeyStr) {
+    //   keyPair = cc.KeyGen()
+    // } else {
+    //   const jointPublicKey = this.deserializePublicKey(jointPublicKeyStr, module)
+    //   keyPair = cc.MultipartyKeyGen(jointPublicKey)
+    // }
+    //
+    // const newJointPublicKeyStr = this.serializePublicKey(keyPair.publicKey, module)
+    //
+    // await axios({
+    //   method: 'post',
+    //   url: `${BASE_URL}/collect`,
+    //   data: {
+    //     id: pollID,
+    //     newNumVoters: numVoters + 1,
+    //     newJointPublicKey: newJointPublicKeyStr,
+    //     oneTimeCode: oneTimeCode,
+    //     location: location
+    //   }
+    // })
+    //
+    // return keyPair.secretKey;
 
-    await axios({
-      method: 'post',
-      url: `${BASE_URL}/collect`,
-      data: {
-        id: pollID,
-        newNumVoters: numVoters + 1,
-        newJointPublicKey: newJointPublicKeyStr,
-        oneTimeCode: oneTimeCode,
-        location: location
-      }
-    })
+    return "SecretKey";
   }
 
 

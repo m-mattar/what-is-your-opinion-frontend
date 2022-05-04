@@ -15,7 +15,7 @@ function App() {
   return (
     <section className={"App container is-fullheight"}>
       <div className={"hero-body"}>
-        <div className={"column is-half is-offset-2"}>
+        <div className={"column is-half is-offset-one-fifth"}>
           <br/>
           <Text
             translationKey={TRANSLATION_KEY.app_title}

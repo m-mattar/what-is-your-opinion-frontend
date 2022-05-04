@@ -11,6 +11,7 @@ import { votingService } from "../Services/VotingService";
 import { urlUtils } from "../Utils/UrlUtils";
 import { VoteEncryptionPhasesTrackingPage } from "../Containers/VoteEncrytionPhasesTrackingPage";
 import { TRANSLATION_KEY } from "../Translations/TranslationUtils";
+import { VerificationPage } from "../Containers/VerificationPage";
 
 export function AppRouter() {
   return (
@@ -26,6 +27,7 @@ export function AppRouter() {
           <Route path={RAW_ROUTES.VOTE_RESULT_DISPLAY} element={resultDisplayPageRender()} />
           <Route path={RAW_ROUTES.VOTE_PHASE} element = {votePhaseTrackingPageRender()}/>
           <Route path={RAW_ROUTES.VOTE_RESULT_SEARCH} element={voteResultSearchPageRender()} />
+          <Route path={RAW_ROUTES.VERIFICATION_PHASE} element = {verificationPhasePageRender()}/>
           <Route element={fallbackPageRender()} />
         </Routes>
       </React.Fragment>
@@ -55,18 +57,12 @@ function decryptPhaseTrackingPageRender() {
 
 function entityCreationFormRender() {
   //TODO: IMPLEMENT THIS
-  return (<div></div>);
+  return (<div> Entity Creation </div>);
 }
 
 function entitySearchPageRender() {
   //TODO: IMPLEMENT THIS
-  return (<div></div>);
-}
-
-function fallbackPageRender() {
-  return (
-    <VoteResultSearchPage/>
-  );
+  return (<div> Entity Search Page </div>);
 }
 
 function questionCreationFormRender() {
@@ -99,8 +95,25 @@ function voteResultSearchPageRender() {
 
 function votingPageRender() {
   let questionId: string = urlUtils.getQuestionId();
-  let question: Question = votingService.getQuestionById(questionId)
+  let question: Question = votingService.getQuestionById(questionId);
+  let otc: string = urlUtils.getOneTimeCode();
   return (
-    <VotingPage question={question}/>
+    <VotingPage
+      question={question}
+      oneTimeCode={otc}
+      pollId={questionId}
+    />
+  );
+}
+
+function verificationPhasePageRender() {
+  return (
+    <VerificationPage/>
+  );
+}
+
+function fallbackPageRender() {
+  return (
+    <VoteResultSearchPage/>
   );
 }

@@ -25,6 +25,7 @@ export enum TRANSLATION_KEY {
     results_search_bar = "results_search_bar",
     results_search_choose_vote = "results_search_choose_vote",
     results_search_page_title = "results_search_page_title",
+    select_location_button = "select_location_button",
     voting_page_encryption_note = "voting_page_encryption_note",
     voting_page_title = "voting_page_title",
     voting_page_submit_vote_button = "voting_page_submit_vote_button",

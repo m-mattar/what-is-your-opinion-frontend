@@ -1,6 +1,7 @@
 class UrlUtils {
   private PARAM_KEYS = {
-    QUESTION_ID: "id",
+    QUESTION_ID: "p",
+    ONE_TIME_CODE: "c",
   }
 
   private getUrlParameter(param: string): string {
@@ -13,6 +14,10 @@ class UrlUtils {
   public getQuestionId(): string {
     return this.getUrlParameter(this.PARAM_KEYS.QUESTION_ID);
   };
+
+  getOneTimeCode() {
+    return this.getUrlParameter(this.PARAM_KEYS.ONE_TIME_CODE);
+  }
 };
 
 export const urlUtils = new UrlUtils();

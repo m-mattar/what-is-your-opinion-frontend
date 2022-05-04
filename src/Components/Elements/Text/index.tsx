@@ -8,6 +8,7 @@ export enum TEXT_TYPE {
   PAGE_TITLE,
   PAGE_SUBTITLE,
   PAGE_NOTE,
+  NORMAL_TEXT,
 }
 
 export const textTypeToClassName = new Map<TEXT_TYPE, string>([
@@ -15,6 +16,7 @@ export const textTypeToClassName = new Map<TEXT_TYPE, string>([
   [TEXT_TYPE.PAGE_TITLE,  "subtitle is-size-4 has-text-centered has-text-weight-bold"],
   [TEXT_TYPE.PAGE_SUBTITLE,  "subtitle"],
   [TEXT_TYPE.PAGE_NOTE,  "subtitle is-size-6 has-text-centered has-text-weight-bold has-text-grey"],
+  [TEXT_TYPE.NORMAL_TEXT, ""]
 ]);
 
 type TextProps = {

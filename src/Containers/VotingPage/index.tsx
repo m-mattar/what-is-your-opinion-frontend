@@ -10,14 +10,23 @@ import { Button } from "../../Components/Elements/Button";
 import { translationProvider } from "../../Translations/TranslationProvider";
 import "./style.css"
 import { EncryptionNote } from "../../Components/Elements/EncryptionNote";
+import { votingService } from "../../Services/VotingService";
+import { localStorageUtils } from "../../Utils/localStorageUtils";
+import { redirectionProvider } from "../../Utils/RouterUtils";
+import { Dropdown } from "../../Components/Elements/Dropdown";
 
 type VotingPageProps = {
   question: Question;
+  pollId: string;
+  oneTimeCode: string;
 }
+
+let locations: string[] = [" ", "بيروت","البقاع","جبل لبنان","النبطية","الشمال","الجنوب"]
 
 export function VotingPage(props: VotingPageProps) {
   const [isSubmissionButtonEnabled, setIsSubmissionButtonEnabled] = useState(false);
   const [selectedVotingOption, setSelectedVotingOption] = useState( {} as VoteOption);
+  const [selectedLocation, setSelectedLocation] = useState("" as string);
 
   const handleChangeOfSelectedVotingOption = (vote: VoteOption): void => {
     if(selectedVotingOption === vote) {
@@ -30,13 +39,10 @@ export function VotingPage(props: VotingPageProps) {
   }
 
   const handleVoteSubmission = (): void => {
-    // call voting service
-    // save key and selectedVotingOpion in Local Storage
-    console.log("SUBMITTING: ", selectedVotingOption);
-    // redirect
-
-    // call collect()
-    //
+    votingService.collect(props.pollId, props.oneTimeCode, selectedLocation).then((key) => {
+      localStorageUtils.setPair(props.question.id, key);
+    });
+    redirectionProvider.redirectToCollectPhaseComplete();
   }
 
   return (
@@ -50,8 +56,11 @@ export function VotingPage(props: VotingPageProps) {
           votingOptions={props.question.voteOptions}
           onChangeSelection={handleChangeOfSelectedVotingOption}
         />
+        <Dropdown
+         items={locations}
+         translationKey={TRANSLATION_KEY.select_location_button}
+         onSelect={(location: string) => setSelectedLocation(location)}/>
       </div>
-
       <br/>
       <Button
         classname={"button button-color is-white is-medium is-responsive is-rounded"}

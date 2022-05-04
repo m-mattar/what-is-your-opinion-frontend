@@ -8,6 +8,7 @@ import { Button } from "../../Components/Elements/Button";
 import { translationProvider } from "../../Translations/TranslationProvider";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
 import { DISPLAY_TYPE } from "../../Components/HigherOrderComponents/SearchPage/Searchable";
+import { redirectionProvider } from "../../Utils/RouterUtils";
 
 export function VoteResultSearchPage() {
   const fetchInitialData = () => {
@@ -15,19 +16,12 @@ export function VoteResultSearchPage() {
     return initialResults;
   }
 
-  const redirectToQuestionCreationForm = () => {
-    console.log("REDIRECTING")
-    // This is reloading the entire page
-    //TODO: Need to re-route instead
-    window.location.assign("/create_question");
-  }
-
   return (
     <Auxiliary>
       <br/><br/>
       <Button
         classname={`button is-normal is-centered is-black is-responsive is-rounded`}
-        onClick={redirectToQuestionCreationForm}
+        onClick={redirectionProvider.redirectToQuestionCreationForm}
         isEnabled={true}
         title={translationProvider.getTranslation(TRANSLATION_KEY.create_question_page_redirect_button)}
       />

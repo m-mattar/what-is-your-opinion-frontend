@@ -25,18 +25,22 @@ class ResultService {
   private getMocks(): VoteResult[] {
 
     let MOCK_RESULT1 = new VoteResult (
-      "ID1", "USJ", [0, 0],75,
+      "ID1", "الصليب الأحمر", [0, 0],75,
     )
 
     let MOCK_RESULT2 = new VoteResult(
-      "ID2", "LAU", [0, 0], 65
+      "ID2", "زعتر و زيت", [0, 0], 65
     )
 
     let MOCK_RESULT3 = new VoteResult (
-      "ID3","AUB",[0, 0],90,
+      "ID3","وزارة التربية",[0, 0],90,
     )
 
-    return [MOCK_RESULT1, MOCK_RESULT2, MOCK_RESULT3];
+    let MOCK_RESULT4 = new VoteResult (
+      "ID4","ليبان بوست",[0, 0],83,
+    )
+
+    return [MOCK_RESULT1, MOCK_RESULT2, MOCK_RESULT3, MOCK_RESULT4];
   }
 
   public getInitialVoteResults(): VoteResult[] {
