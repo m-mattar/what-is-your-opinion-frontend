@@ -63,6 +63,7 @@ export function VotingPage(props: VotingPageProps) {
       </div>
       <br/>
       <Button
+        _id={"submit-vote-button"}
         classname={"button button-color is-white is-medium is-responsive is-rounded"}
         onClick={handleVoteSubmission}
         isEnabled={isSubmissionButtonEnabled}

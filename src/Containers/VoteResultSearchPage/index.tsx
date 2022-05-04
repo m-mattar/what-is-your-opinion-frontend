@@ -20,6 +20,7 @@ export function VoteResultSearchPage() {
     <Auxiliary>
       <br/><br/>
       <Button
+        _id={"go-to-create-question-button"}
         classname={`button is-normal is-centered is-black is-responsive is-rounded`}
         onClick={redirectionProvider.redirectToQuestionCreationForm}
         isEnabled={true}

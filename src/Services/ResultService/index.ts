@@ -33,7 +33,7 @@ class ResultService {
     )
 
     let MOCK_RESULT3 = new VoteResult (
-      "ID3","وزارة التربية",[0, 0],90,
+      "ID3","وزارة التربية",[0, 0],52,
     )
 
     let MOCK_RESULT4 = new VoteResult (

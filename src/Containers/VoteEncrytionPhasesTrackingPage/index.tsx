@@ -22,6 +22,7 @@ export function VoteEncryptionPhasesTrackingPage(props: VoteEncryptionPhasesTrac
   const phaseOneButtonVerifyVotes = ():ReactElement => {
     return (
       <Button
+        _id={"verify-phase-one-button"}
         classname={buttonClassName}
         onClick={redirectionProvider.redirectToVerificationPage}
         title={translationProvider.getTranslation(
@@ -35,6 +36,7 @@ export function VoteEncryptionPhasesTrackingPage(props: VoteEncryptionPhasesTrac
   const phaseTwoButtonRedirectToVoteResultsPage = (): ReactElement => {
     return (
       <Button
+        _id={"verify-phase-two-vutton"}
         classname={buttonClassName}
         onClick={redirectionProvider.redirectToVoteResultSearchPage}
         title={translationProvider.getTranslation(
