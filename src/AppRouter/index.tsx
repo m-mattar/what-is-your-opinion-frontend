@@ -17,43 +17,19 @@ export function AppRouter() {
     <BrowserRouter>
       <React.Fragment>
         <Routes>
-          <Route path={RAW_ROUTES.RESULT_SEARCH} element={resultSearchPageRender()} />
-          <Route path={RAW_ROUTES.RESULT_DISPLAY} element={resultDisplayPageRender()} />
-          <Route path={RAW_ROUTES.QUESTION_VOTE} element={votingPageRender()} />
-          <Route path={RAW_ROUTES.QUESTION_CREATE} element={questionCreationFormRender()} />
           <Route path={RAW_ROUTES.COLLECT_PHASE} element = {collectPhaseTrackingPageRender()}/>
-          <Route path={RAW_ROUTES.VOTE_PHASE} element = {votePhaseTrackingPageRender()}/>
           <Route path={RAW_ROUTES.DECRYPT_PHASE} element = {decryptPhaseTrackingPageRender()}/>
+          <Route path={RAW_ROUTES.ENTITY_CREATE} element = {entityCreationFormRender()}/>
+          <Route path={RAW_ROUTES.ENTITY_SEARCH} element = {entitySearchPageRender()}/>
+          <Route path={RAW_ROUTES.QUESTION_CREATE} element={questionCreationFormRender()} />
+          <Route path={RAW_ROUTES.QUESTION_VOTE} element={votingPageRender()} />
+          <Route path={RAW_ROUTES.VOTE_RESULT_DISPLAY} element={resultDisplayPageRender()} />
+          <Route path={RAW_ROUTES.VOTE_PHASE} element = {votePhaseTrackingPageRender()}/>
+          <Route path={RAW_ROUTES.VOTE_RESULT_SEARCH} element={voteResultSearchPageRender()} />
           <Route element={fallbackPageRender()} />
         </Routes>
       </React.Fragment>
     </BrowserRouter>
-  );
-}
-
-function resultSearchPageRender() {
-  return (
-    <VoteResultSearchPage/>
-  );
-}
-
-function resultDisplayPageRender() {
-  return (
-    <VoteResultDisplayPage/>
-  );
-}
-
-function votingPageRender() {
-  let questionId: string = urlUtils.getQuestionId();
-  let question: Question = votingService.getQuestionById(questionId)
-  return (
-    <VotingPage question={question}/>
-  );
-}
-
-function questionCreationFormRender() {
-  return (
-    <QuestionCreationForm/>
   );
 }
 
@@ -63,16 +39,6 @@ function collectPhaseTrackingPageRender() {
       pageTitleTranslationKey={TRANSLATION_KEY.encryption_phase0_collect_success_title}
       pageNoteTranslationKey={TRANSLATION_KEY.encryption_phase0_collect_success_note}
       encryptionPhase={ENCRYPTION_PHASE.PHASE_0}
-    />
-  );
-}
-
-function votePhaseTrackingPageRender() {
-  return (
-    <VoteEncryptionPhasesTrackingPage
-      pageTitleTranslationKey={TRANSLATION_KEY.encryption_phase1_vote_success_title}
-      pageNoteTranslationKey={TRANSLATION_KEY.encryption_phase1_vote_success_note}
-      encryptionPhase={ENCRYPTION_PHASE.PHASE_1}
     />
   );
 }
@@ -87,8 +53,54 @@ function decryptPhaseTrackingPageRender() {
   );
 }
 
+function entityCreationFormRender() {
+  //TODO: IMPLEMENT THIS
+  return (<div></div>);
+}
+
+function entitySearchPageRender() {
+  //TODO: IMPLEMENT THIS
+  return (<div></div>);
+}
+
 function fallbackPageRender() {
   return (
     <VoteResultSearchPage/>
+  );
+}
+
+function questionCreationFormRender() {
+  return (
+    <QuestionCreationForm/>
+  );
+}
+
+function resultDisplayPageRender() {
+  return (
+    <VoteResultDisplayPage/>
+  );
+}
+
+function votePhaseTrackingPageRender() {
+  return (
+    <VoteEncryptionPhasesTrackingPage
+      pageTitleTranslationKey={TRANSLATION_KEY.encryption_phase1_vote_success_title}
+      pageNoteTranslationKey={TRANSLATION_KEY.encryption_phase1_vote_success_note}
+      encryptionPhase={ENCRYPTION_PHASE.PHASE_1}
+    />
+  );
+}
+
+function voteResultSearchPageRender() {
+  return (
+    <VoteResultSearchPage/>
+  );
+}
+
+function votingPageRender() {
+  let questionId: string = urlUtils.getQuestionId();
+  let question: Question = votingService.getQuestionById(questionId)
+  return (
+    <VotingPage question={question}/>
   );
 }

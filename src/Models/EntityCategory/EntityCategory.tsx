@@ -1,6 +1,7 @@
 import "./styles.css"
 import { Searchable } from "../../Components/HigherOrderComponents/SearchPage/Searchable";
 import { ReactElement } from "react";
+import { Button } from "../../Components/Elements/Button";
 
 export class EntityCategory implements Searchable{
   _id: string = "";
@@ -15,14 +16,20 @@ export class EntityCategory implements Searchable{
 
   display(): ReactElement {
     return (
-      <div className={"image-content"}>
-        <div className={"image"}>
-          <img src= {this.imageName} alt= {this.imageName}/>
+      <button
+        className={`button is-responsive`}
+        onClick={this.onClick}
+        disabled={false}
+      >
+        <div className={"image-content"}>
+          <div className={"image"}>
+            <img src= {this.imageName} alt= {this.imageName}/>
+          </div>
+          <div className="centered">
+            {this.name}
+          </div>
         </div>
-        <div className="centered">
-          {this.name}
-        </div>
-      </div>
+      </button>
     )
   }
 
@@ -31,5 +38,6 @@ export class EntityCategory implements Searchable{
   }
 
   onClick(): void {
+    
   }
 }

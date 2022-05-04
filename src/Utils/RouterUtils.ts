@@ -1,11 +1,13 @@
 export const RAW_ROUTES = {
-  RESULT_SEARCH: "/",
-  RESULT_DISPLAY: "/result",
-  QUESTION_VOTE: "/vote",
-  QUESTION_CREATE: "/create",
   COLLECT_PHASE: "/collect",
-  VOTE_PHASE: "/enc",
   DECRYPT_PHASE: "/dec",
+  ENTITY_CREATE: "/create_entity",
+  ENTITY_SEARCH: "/create_question/choose_entity",
+  QUESTION_CREATE: "/create_question",
+  QUESTION_VOTE: "/vote",
+  VOTE_RESULT_DISPLAY: "/result",
+  VOTE_RESULT_SEARCH: "/",
+  VOTE_PHASE: "/enc",
 };
 
 export enum ENCRYPTION_PHASE {

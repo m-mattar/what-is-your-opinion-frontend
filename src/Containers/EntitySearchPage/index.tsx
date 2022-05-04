@@ -9,29 +9,16 @@ import { translationProvider } from "../../Translations/TranslationProvider";
 import { TRANSLATION_KEY } from "../../Translations/TranslationUtils";
 import { DISPLAY_TYPE } from "../../Components/HigherOrderComponents/SearchPage/Searchable";
 
-export function VoteResultSearchPage() {
+export function EntitySearchPage() {
   const fetchInitialData = () => {
-    let initialResults: VoteResult[] = resultService.getInitialVoteResults();
+    let initialResults: VoteResult[] = [] //TODO: Implement this
     return initialResults;
-  }
-
-  const redirectToQuestionCreationForm = () => {
-    console.log("REDIRECTING")
-    // This is reloading the entire page
-    //TODO: Need to re-route instead
-    window.location.assign("/create_question");
   }
 
   return (
     <Auxiliary>
       <br/><br/>
-      <Button
-        classname={`button is-normal is-centered is-black is-responsive is-rounded`}
-        onClick={redirectToQuestionCreationForm}
-        isEnabled={true}
-        title={translationProvider.getTranslation(TRANSLATION_KEY.create_question_page_redirect_button)}
-      />
-      <br/><br/>
+
       <SearchPage
         searchPageTarget={SEARCH_PAGE_TARGET.VOTE_RESULTS}
         initialResults={fetchInitialData}
