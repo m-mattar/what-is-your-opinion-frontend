@@ -21,6 +21,7 @@ export class EntityCategory implements Searchable{
             src= {this.imageName}
             alt= {this.imageName}
             onClick={this.onClick}
+            role={"button"}
           />
         </div>
         <div className="centered">

@@ -1,6 +1,8 @@
 {
     "app_title": "What's your Opinion?",
+    "create_entity": "Create a new Entity",
     "create_question_choose_entity": "Choose an Entity for your question",
+    "create_question_choose_entity_category": "Choose an Entity Category",
     "create_question_page_redirect_button": "Create a Question",
     "create_question_page_title": "Create a Question",
     "create_question_success": "You successfully created a question",

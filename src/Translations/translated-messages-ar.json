@@ -1,6 +1,8 @@
 {
     "app_title": "شو رأيك؟",
+    "create_entity": "انشئ شخصية جديدة",
     "create_question_choose_entity": "اختر شخصيّة للتصويت",
+    "create_question_choose_entity_category": "إختر فئة الشخصية",
     "create_question_page_redirect_button": "انشاء تصويت جديد",
     "create_question_page_title": "انشاء تصويت جديد",
     "create_question_success": "لقد قمت بكتابة سؤال بنجاح",
