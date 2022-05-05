@@ -7,11 +7,11 @@ import { VotingPage } from "../Containers/VotingPage";
 import { QuestionCreationForm } from "../Containers/QuestionCreationForm";
 import { ENCRYPTION_PHASE, RAW_ROUTES } from "../Utils/RouterUtils";
 import { Question } from "../Models/Question";
-import { votingService } from "../Services/VotingService";
 import { urlUtils } from "../Utils/UrlUtils";
 import { VoteEncryptionPhasesTrackingPage } from "../Containers/VoteEncrytionPhasesTrackingPage";
 import { TRANSLATION_KEY } from "../Translations/TranslationUtils";
 import { VerificationPage } from "../Containers/VerificationPage";
+import { questionService } from "../Services/QuestionService";
 
 export function AppRouter() {
   return (
@@ -95,7 +95,7 @@ function voteResultSearchPageRender() {
 
 function votingPageRender() {
   let questionId: string = urlUtils.getQuestionId();
-  let question: Question = votingService.getQuestionById(questionId);
+  let question: Question = questionService.getQuestionById(questionId);
   let otc: string = urlUtils.getOneTimeCode();
   return (
     <VotingPage
